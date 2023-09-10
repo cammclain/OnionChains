@@ -13,37 +13,66 @@ OnionChains is a robust tool crafted to streamline the creation and rotation of 
 - **🔍 Dependency Checks**: Prior to execution, the script verifies if essential tools (`tor` and `proxychains`) are present, guiding users towards installation if missing.
 - **📜 Verbose Logging**: Use the `--verbose` flag for an in-depth logging experience, simplifying debugging and insights.
 
-🚀 Usage
+🚀 **Usage**
 
-The OnionChains script allows for several command-line arguments and options to tailor its behavior. Here's a comprehensive guide:
+The `OnionChains` script offers a myriad of command-line arguments and options, allowing you to customize its operation. Delve into the details below:
 
-Command:
+### 📜 **Command**:
+```
 generate_proxychains [num_circuits] [OPTIONS]
+```
 
-Arguments:
+### 📌 **Arguments**:
 
-num_circuits: The number of Tor circuits you want to create. This determines how many different routes your traffic can take through the Tor network.
-Options:
+- **num_circuits**: 
+  - **Description**: Dictates the number of Tor circuits to be crafted. This essentially sets how many diverse paths your traffic can journey through the Tor network.
+  - **Usage**: 
+    ```
+    generate_proxychains 3
+    ```
 
---proxychains-path: Specifies the path to proxychains.conf. By default, it uses /etc/proxychains.conf.
+### 🔧 **Options**:
 
-Example: --proxychains-path="/path/to/your/proxychains.conf"
---torrc-path: Designates the directory to save the torrc files. The default directory is /etc/tor.
+- **--proxychains-path**:
+  - **Description**: Designates the path to `proxychains.conf`. The default pathway is `/etc/proxychains.conf`.
+  - **Usage**:
+    ```
+    --proxychains-path="/path/to/your/proxychains.conf"
+    ```
 
-Example: --torrc-path="/path/to/torrc/directory"
---rotate-requests: This option allows you to set the number of requests to make before rotating to a new Tor circuit. The default is 1, meaning each request uses a different circuit.
+- **--torrc-path**:
+  - **Description**: Pinpoints the directory to house the `torrc` files. By default, it resorts to `/etc/tor`.
+  - **Usage**: 
+    ```
+    --torrc-path="/path/to/torrc/directory"
+    ```
 
-Example: --rotate-requests=5 (This would rotate the circuit after every 5 requests)
---verbose: Enable this flag to receive detailed logging, offering insights into the script's operations and aiding in debugging.
+- **--rotate-requests**:
+  - **Description**: This nifty option lets you stipulate the number of requests before shuffling to a fresh Tor circuit. The default setting is 1, implying each request dons a distinct circuit.
+  - **Usage**: 
+    ```
+    --rotate-requests=5
+    ```
+    > 💡 Note: In this instance, the circuit would undergo rotation post every 5 requests.
 
-Example: --verbose
-To use the script with the default settings and 3 circuits, simply run:
+- **--verbose**:
+  - **Description**: Activate this flag for an immersive logging experience, granting insights into the script's inner workings and streamlining debugging.
+  - **Usage**: 
+    ```
+    --verbose
+    ```
 
-generate_proxychains 3
+### 🎯 **Examples**:
 
-To customize the behavior, add the desired options:
+1. To harness the script with default configurations and spawn 3 circuits:
+    ```
+    generate_proxychains 3
+    ```
 
-generate_proxychains 5 --proxychains-path="/custom/path/proxychains.conf" --verbose
+2. To tweak the behavior and incorporate tailored options:
+    ```
+    generate_proxychains 5 --proxychains-path="/custom/path/proxychains.conf" --verbose
+    ```
 
 ## 🛠️ Setup & Installation
 

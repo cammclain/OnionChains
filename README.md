@@ -13,13 +13,37 @@ OnionChains is a robust tool crafted to streamline the creation and rotation of 
 - **🔍 Dependency Checks**: Prior to execution, the script verifies if essential tools (`tor` and `proxychains`) are present, guiding users towards installation if missing.
 - **📜 Verbose Logging**: Use the `--verbose` flag for an in-depth logging experience, simplifying debugging and insights.
 
-## 🚀 Usage
+🚀 Usage
 
-Prefix your regular system commands with `proxychains` to ensure that each network request navigates through a unique Tor circuit:
+The OnionChains script allows for several command-line arguments and options to tailor its behavior. Here's a comprehensive guide:
 
-```bash
-proxychains sudo nmap IP --script="discovery"
-```
+Command:
+generate_proxychains [num_circuits] [OPTIONS]
+
+Arguments:
+
+num_circuits: The number of Tor circuits you want to create. This determines how many different routes your traffic can take through the Tor network.
+Options:
+
+--proxychains-path: Specifies the path to proxychains.conf. By default, it uses /etc/proxychains.conf.
+
+Example: --proxychains-path="/path/to/your/proxychains.conf"
+--torrc-path: Designates the directory to save the torrc files. The default directory is /etc/tor.
+
+Example: --torrc-path="/path/to/torrc/directory"
+--rotate-requests: This option allows you to set the number of requests to make before rotating to a new Tor circuit. The default is 1, meaning each request uses a different circuit.
+
+Example: --rotate-requests=5 (This would rotate the circuit after every 5 requests)
+--verbose: Enable this flag to receive detailed logging, offering insights into the script's operations and aiding in debugging.
+
+Example: --verbose
+To use the script with the default settings and 3 circuits, simply run:
+
+generate_proxychains 3
+
+To customize the behavior, add the desired options:
+
+generate_proxychains 5 --proxychains-path="/custom/path/proxychains.conf" --verbose
 
 ## 🛠️ Setup & Installation
 
